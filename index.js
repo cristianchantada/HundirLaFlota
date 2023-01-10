@@ -7,20 +7,61 @@ const DESTRUCTORES = 2;
 const SUBMARINOS = 2;
 const DISPAROS = 100;
 
-
-function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos){
-    let totalBuques = portaviones + acorazados + cruceros + destructores + submarinos;
-    let listaBuques = [portaviones, acorazados, cruceros, destructores, submarinos]
-
-    for(i = 0; i <= 3; i++){
-        for(x= 0; x <= listaBuques[i] - 1; x++){
-            
-        }
-
-
-
+class Buque {
+    constructor(tipo, codigo, numeroSecciones, jugador, simbolo){
+        this.tipo = tipo;
+        this.codigo = codigo;
+        this.numeroSecciones = numeroSecciones;
+        this.jugador = jugador;
+        this.simbolo = simbolo;
     }
 }
+
+function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos){
+
+    let totalBuques = portaviones + acorazados + cruceros + destructores + submarinos;
+    let listaBuques = [portaviones, acorazados, cruceros, destructores, submarinos];
+
+    let armada = {
+        portaviones: [],
+        acorazados: [],
+        cruceros: [],
+        destructores: [],
+        submarinos: [],
+        totalBuques: totalBuques
+    }
+
+    for(i = 0; i <= 4; i++){
+        for(x= 0; x <= listaBuques[i] - 1; x++){
+            if(i === 0){
+                let buque = new Buque("portaviones", "P" + (1 + x) , 5, "jugador1", "🛫");
+                armada.portaviones.push(buque); 
+            } else if (i === 1) {
+                let buque = new Buque("acorazado", "A" + (1 + x), 4, "jugador1", "🚢" );
+                armada.acorazados.push(buque);
+            } else if (i === 2) {
+                let buque = new Buque("crucero", "C" + (1 + x), 3, "jugador1", "🛥️" );
+                armada.cruceros.push(buque); 
+            } else if (i === 3){
+                let buque = new Buque("destructor", "D" + (1 + x), 2, "jugador1", "🚤" );
+                armada.destructores.push(buque);
+            } else {
+                let buque = new Buque("submarino", "S"+ (1 + x), 1, "jugador1", "🚀" );
+                armada.submarinos.push(buque);
+            }
+        }
+    }
+    return armada;
+}
+
+
+
+
+
+
+
+armada = creaArmada(1,1,2,3,3);
+console.log(armada);
 
 class Tablero {
     constructor (numeroJugador){
@@ -38,26 +79,13 @@ class Tablero {
     }
 }
 
-class Buque {
-    constructor(tipo, codigo, numeroSecciones, jugador, simbolo){
-        this.tipo = tipo;
-        this.codigo = codigo;
-        this.numeroSecciones = numeroSecciones;
-        this.jugador = jugador;
-        this.simbolo = simbolo;
-    }
 
-    sitúaBarco (){
 
-    }
-
-}
-
-function creaBuque(armada){
+/* function creaBuque(armada){
     let totalBuques = PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS;
 
     for(let i; )
-}
+} */
 
 
 // Armada de los Estados Unidos.
