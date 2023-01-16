@@ -96,11 +96,8 @@ for(i = 0; i <= Object.values(armada).length - 2; i++) {
         if(orientacion) orientacion = "horizontal"
         else orientacion = "vertical";
 
-        orientacion = "horizontal";
-
         if(orientacion === "horizontal"){
 
-            // Comprobar si las celdas de posicionamiento asignadas están libres.
 
             seccionesComprobadas = 0;
 
@@ -110,14 +107,14 @@ for(i = 0; i <= Object.values(armada).length - 2; i++) {
                 fila = dameNumeroAleatorioAmbosIncluidos(0, 9);
                 celda = dameNumeroAleatorioAmbosIncluidos(0, posicionLimiteProa);
 
-                    for(y = celda; y < celda + listaTipoDeBarco[x].numeroSecciones; y++){
-                        if(tablero1.escenario[fila][y] === " "){
-                            seccionesComprobadas++;
-                        } else {
-                            seccionesComprobadas = 0;
-                            break
-                        }
+                for(y = celda; y < celda + listaTipoDeBarco[x].numeroSecciones; y++){
+                    if(tablero1.escenario[fila][y] === " "){
+                        seccionesComprobadas++;
+                    } else {
+                        seccionesComprobadas = 0;
+                        break
                     }
+                }
             }
 
             // Situar el barco;
@@ -127,9 +124,29 @@ for(i = 0; i <= Object.values(armada).length - 2; i++) {
             }
 
 
-        } /* else {
-            posicion = dameNumeroAleatorioAmbosIncluidos(0, posicionLimiteProa);
-        } */
+        } else {
+
+            seccionesComprobadas = 0;
+
+            while(seccionesComprobadas <= listaTipoDeBarco[x].numeroSecciones){
+
+                columna = dameNumeroAleatorioAmbosIncluidos(0, 9);
+                celda = dameNumeroAleatorioAmbosIncluidos(0, posicionLimiteProa);
+
+                for(y = celda; y < celda + listaTipoDeBarco[x].numeroSecciones; y++){
+                    if(tablero1.escenario[y][columna] === " "){
+                        seccionesComprobadas++;
+                    } else {
+                        seccionesComprobadas = 0;
+                        break
+                    }
+                }
+            }
+
+            for(y = celda; y < listaTipoDeBarco[x].numeroSecciones + celda; y++){
+                tablero1.escenario[y][columna] =  codigoNavio;
+            }
+        }
     }
 }
 
