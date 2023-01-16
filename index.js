@@ -59,64 +59,79 @@ class Tablero {
     constructor (numeroJugador){
         this.numeroJugador = numeroJugador;
         this.escenario = []
-        this.tableroFisico = function(FILAS, COLUMNAS){
-            for(let i = 0; i <= FILAS; i++){
-                this.escenario.push([]);
-                for(let x = 0; x <= COLUMNAS; x++){
-                    this.escenario[i][x] = "O"
-                }
+    }
+    tableroFisico(FILAS, COLUMNAS) {
+        for(let i = 0; i < FILAS; i++){
+            this.escenario.push([]);
+            for(let x = 0; x < COLUMNAS; x++){
+                this.escenario[i].push(" ");
             }
-            return this.escenario;
         }
     }
+}
+
+function dameNumeroAleatorioAmbosIncluidos(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 let tablero1 = new Tablero("jugador1");
 tablero1.tableroFisico(FILAS, COLUMNAS);
 let tablero2 = new Tablero("jugador2");
-tablero1.tableroFisico(FILAS, COLUMNAS);
+tablero2.tableroFisico(FILAS, COLUMNAS);
 armada = creaArmada(1,1,2,3,3);
 
-/* codigoBarco = "B2";
-
-function colocaBarco(codigoBarco) {
-
-} */
-
-function orientacionAleatoria(armada) {
-
-    numero = Math.random();
-
-    if(numero >= 0.5) orientacion = "horizontal";
-    else orientacion = "vertical";
-
-    if (orientacion === "horizontal"){
-
-        for(let tipoBarco in armada){
-            console.log(tipoBarco);
-
-            let numeroSecciones = armada.tipoBarco.numeroSecciones;
-
-        }
-    }
-    
-
-}
-
-
-console.log(Object.values(armada).length);
+// colocaBarcosEnTablero1(tablero1);
+// colocaBarcosEnTablero1(tablero2);
 
 for(i = 0; i <= Object.values(armada).length - 2; i++) {
     let listaTipoDeBarco = Object.values(armada)[i];
 
-    for(x = 0; x <= listaTipoDeBarco.length; x++);
-        posicionLimiteProa = listaTipoDeBarco[x].numeroSecciones
+    for(x = 0; x < listaTipoDeBarco.length; x++){
+        codigoNavio = listaTipoDeBarco[x].codigo;
+        posicionLimiteProa = listaTipoDeBarco[x].numeroSecciones - 1;
+        orientacion = dameNumeroAleatorioAmbosIncluidos(0, 1);
 
-        break;
+        if(orientacion) orientacion = "horizontal"
+        else orientacion = "vertical";
+
+        orientacion = "horizontal";
+
+        if(orientacion === "horizontal"){
+
+            // Comprobar si las celdas de posicionamiento asignadas están libres.
+
+            seccionesComprobadas = 0;
+
+            while(seccionesComprobadas <= listaTipoDeBarco[x].numeroSecciones){
+
+
+                fila = dameNumeroAleatorioAmbosIncluidos(0, 9);
+                celda = dameNumeroAleatorioAmbosIncluidos(0, posicionLimiteProa);
+
+                    for(y = celda; y < celda + listaTipoDeBarco[x].numeroSecciones; y++){
+                        if(tablero1.escenario[fila][y] === " "){
+                            seccionesComprobadas++;
+                        } else {
+                            seccionesComprobadas = 0;
+                            break
+                        }
+                    }
+            }
+
+            // Situar el barco;
+
+            for(y = celda; y < listaTipoDeBarco[x].numeroSecciones + celda; y++){
+                tablero1.escenario[fila][y] =  codigoNavio;
+            }
+
+
+        } /* else {
+            posicion = dameNumeroAleatorioAmbosIncluidos(0, posicionLimiteProa);
+        } */
     }
-    break;
 }
 
 
-/* 
-console.log(armada["cruceros"][0].tipo); */
+console.table(tablero1.escenario);
