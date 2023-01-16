@@ -9,7 +9,6 @@ function dameNumeroAleatorioAmbosIncluidos(min, max){
 
 function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos){
 
-    let totalBuques = portaviones + acorazados + cruceros + destructores + submarinos;
     let listaBuques = [portaviones, acorazados, cruceros, destructores, submarinos];
 
     let armada = {
@@ -18,8 +17,7 @@ function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos
         cruceros: [],
         destructores: [],
         submarinos: [],
-        listaBuques: listaBuques,
-        totalBuques: totalBuques
+        listaBuques: listaBuques
     }
 
     for(let i = 0; i <= 4; i++){
@@ -58,10 +56,7 @@ function posicionaArmada(armada, tablero){
 
             let orientacion = dameNumeroAleatorioAmbosIncluidos(0, 1);
 
-            if(orientacion) orientacion = "horizontal"
-            else orientacion = "vertical";
-
-            if(orientacion === "horizontal"){
+            if(orientacion){
 
                 let seccionesComprobadas = 0;
                 while(seccionesComprobadas <= listaTipoDeBarco[x].numeroSecciones){
@@ -109,3 +104,24 @@ function posicionaArmada(armada, tablero){
     }
     return tablero;
 }
+
+// Turnos jugadores:
+
+    // seleccionTiroVertical = dameNumeroAleatorioAmbosIncluidos(0, 10);
+    // seleccionTiroHorizontal dameNumeroAleatorioAmbosIncluidos(0,10);
+
+    // comprobar si no ha diparado antes a dicha posición:
+
+        // Si en la posición hay 'Agua' O 'Fuego':
+            // recalcula el disparo
+        // FUEGOOOOOO !!!:
+            // mientras no falle sigue tirando:
+                // Si en la posicion hay != distinto de " " (solo queda buque):
+                    //Tocado
+                        // SobreEscribimos codigo buque a Fuego 
+                        // Anotamos código del buque
+                        // Comprobamos en tablero enemigo si queda alguna casilla con ese codigo:
+                            // si no queda, se dice hundido
+                // En los demas casos (Solo queda " ") ha fallado:
+                    // Se sobreescribe en el tablero enemigo "Fuego" en la casilla:
+                    // cambia turno al otro jugador.

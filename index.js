@@ -14,3 +14,4 @@ posicionaArmada(armada, tablero2);
 
 console.table(tablero1.escenario);
 console.table(tablero2.escenario);
+
