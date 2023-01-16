@@ -28,6 +28,7 @@ function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos
         cruceros: [],
         destructores: [],
         submarinos: [],
+        listaBuques: listaBuques,
         totalBuques: totalBuques
     }
 
@@ -54,15 +55,6 @@ function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos
     return armada;
 }
 
-
-
-
-
-
-
-armada = creaArmada(1,1,2,3,3);
-console.log(armada);
-
 class Tablero {
     constructor (numeroJugador){
         this.numeroJugador = numeroJugador;
@@ -79,44 +71,52 @@ class Tablero {
     }
 }
 
-
-
-/* function creaBuque(armada){
-    let totalBuques = PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS;
-
-    for(let i; )
-} */
-
-
-// Armada de los Estados Unidos.
-
-let portavionesAmericano = new Buque("portaviones", "P", 5, "jugador1", "🛫");
-let acorazadoAmericano = new Buque("acorazado", "A", 4, "jugador1", "🚢" );
-let cruceroAmericano1 = new Buque("Crucero", "C", 3, "jugador1", "🛥️" );
-let cruceroAmericano2 = new Buque("Crucero", "C", 3, "jugador1", "🛥️" );
-let destructorAmericano1 = new Buque("Destructor", "D", 2, "jugador1", "🚤" );
-let destructorAmericano2 = new Buque("Destructor", "D", 2, "jugador1", "🚤" );
-let destructorAmericano3 = new Buque("Destructor", "D", 2, "jugador1", "🚤" );
-let submarinoAmericano1 = new Buque("submarino", "S", 1, "jugaSor1", "🚀" );
-let submarinoAmericano2 = new Buque("submarino", "S", 1, "jugaSor1", "🚀" );
-let submarinoAmericano3 = new Buque("submarino", "S", 1, "jugaSor1", "🚀" );
-
-// Armada Imperial Japonesa.
-
-/* let portavionesJapones = new Buque("potaviones", "P", 5, "jugador2", "🛫");
-let acorazadoJapones = new Buque("acorazado", "A", 4, "jugador2", "🚢" );
-let cruceroJapones1 = new Buque("Crucero", "C", 3, "jugador2", "🛥️" );
-let cruceroJapones2 = new Buque("Crucero", "C", 3, "jugador2", "🛥️" );
-let destructorJapones1 = new Buque("Destructor", "D", 2, "jugador2", "🚤" );
-let destructorJapones2 = new Buque("Destructor", "D", 2, "jugador2", "🚤" );
-let destructorJapones3 = new Buque("Destructor", "D", 2, "jugador2", "🚤" );
-let submarinoJapones1 = new Buque("submarino", "S", 1, "jugador2", "🚀" );
-let submarinoJapones2 = new Buque("submarino", "S", 1, "jugador2", "🚀" );
-let submarinoJapones3 = new Buque("submarino", "S", 1, "jugador2", "🚀" ); */
-
-
-
 let tablero1 = new Tablero("jugador1");
 tablero1.tableroFisico(FILAS, COLUMNAS);
 let tablero2 = new Tablero("jugador2");
 tablero1.tableroFisico(FILAS, COLUMNAS);
+armada = creaArmada(1,1,2,3,3);
+
+/* codigoBarco = "B2";
+
+function colocaBarco(codigoBarco) {
+
+} */
+
+function orientacionAleatoria(armada) {
+
+    numero = Math.random();
+
+    if(numero >= 0.5) orientacion = "horizontal";
+    else orientacion = "vertical";
+
+    if (orientacion === "horizontal"){
+
+        for(let tipoBarco in armada){
+            console.log(tipoBarco);
+
+            let numeroSecciones = armada.tipoBarco.numeroSecciones;
+
+        }
+    }
+    
+
+}
+
+
+console.log(Object.values(armada).length);
+
+for(i = 0; i <= Object.values(armada).length - 2; i++) {
+    let listaTipoDeBarco = Object.values(armada)[i];
+
+    for(x = 0; x <= listaTipoDeBarco.length; x++);
+        posicionLimiteProa = listaTipoDeBarco[x].numeroSecciones
+
+        break;
+    }
+    break;
+}
+
+
+/* 
+console.log(armada["cruceros"][0].tipo); */
