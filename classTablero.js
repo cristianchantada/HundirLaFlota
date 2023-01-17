@@ -1,10 +1,11 @@
-import { DISPAROS } from "./data.js";
+import { DISPAROS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS } from "./data.js";
 
 export class Tablero {
     constructor (nombreJugador){
         this.nombreJugador = nombreJugador;
         this.escenario = [];
         this.disparosJugador = DISPAROS;
+        this.buquesFlota = PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS;
     }
     tableroFisico(FILAS, COLUMNAS) {
         for(let i = 0; i < FILAS; i++){

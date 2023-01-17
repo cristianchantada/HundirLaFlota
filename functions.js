@@ -130,16 +130,23 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
 
                 let hundido = true;
 
-                for(let i= 0; i < FILAS; i++ ) {
+                for(let i= 0; i < FILAS; i++ ) {                 
                     for(let x = 0; x < COLUMNAS; x++){
-                        if(x = codigoNavioDañado){
+                        if(tableroEnemigo.escenario[i][x] === codigoNavioDañado){
                             hundido = false;
                         }
                     }
                 }
 
                 if(hundido === true){
+                    var victoria = false
+                    tableroEnemigo.buquesFlota--;
                     console.log("¡ El navio enemigo ha sido hundido ! ¡Hip, hip, hurraaaa! 🥳🥳🎉🎉");
+
+                    if(tableroEnemigo.buquesFlota === 0){
+                        victoria = true;
+                        break;
+                    }
                 }
                     
             } else {
@@ -155,14 +162,15 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
         }
     }
 
-    let victoria = true;
+/*     let victoria = true;
 
-        for(let i= 0; i < FILAS; i++ ) {
-            for(let x = 0; x < COLUMNAS; x++){
-                if(x !== " " && x !== "F" && x !== "W"){
-                    victoria = false;
-                }
+    for(let i= 0; i < FILAS; i++ ) {
+        for(let x = 0; x < COLUMNAS; x++){
+            if(x !== " " || x !== "🔥" || x !== "🌊"){
+                victoria = false;
             }
         }
-        return victoria;
+    } */
+
+    return victoria;
 }

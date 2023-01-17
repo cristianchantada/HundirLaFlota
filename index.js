@@ -15,8 +15,8 @@ posicionaArmada(armada, tablero2);
 let finPartida = false;
 
 while(!finPartida){
-    rondaDeDisparo(tablero1, tablero2);
-    rondaDeDisparo(tablero2, tablero1);
+    finPartida = rondaDeDisparo(tablero1, tablero2);
+    finPartida = rondaDeDisparo(tablero2, tablero1);
 }
 
 console.log("LA PARTIDA HA FINALIZADO");

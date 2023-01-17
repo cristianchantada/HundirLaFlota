@@ -4,8 +4,8 @@ const FILAS = 10;
 const COLUMNAS = 10;
 const PORTAVIONES = 1;
 const ACORAZADOS = 1;
-const CRUCEROS = 3;
-const DESTRUCTORES = 2;
-const SUBMARINOS = 2;
+const CRUCEROS = 2;
+const DESTRUCTORES = 3;
+const SUBMARINOS = 3;
 const DISPAROS = 100;
 
