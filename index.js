@@ -1,5 +1,6 @@
 import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS, DISPAROS} from "./data.js";
 import {creaArmada, posicionaArmada, rondaDeDisparo} from "./functions.js";
+import { dibujaBuque } from "./dibujos.js";
 import { Tablero } from "./classTablero.js";
 
 
@@ -12,8 +13,16 @@ let armada = creaArmada(PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARI
 posicionaArmada(armada, tablero1);
 posicionaArmada(armada, tablero2);
 
-let finPartida = false;
+dibujaBuque();
 
+console.table(tablero1.escenario);
+console.log();
+console.log();
+console.table(tablero2.escenario);
+console.log();
+console.log();
+
+let finPartida = false;
 while(!finPartida){
     finPartida = rondaDeDisparo(tablero1, tablero2);
     finPartida = rondaDeDisparo(tablero2, tablero1);

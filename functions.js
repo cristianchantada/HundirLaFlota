@@ -108,7 +108,11 @@ function posicionaArmada(armada, tablero){
 
 function rondaDeDisparo(tableroPropio, tableroEnemigo){
 
-    console.log(`Es el TURNO de la ${tableroPropio.nombreJugador}`);
+    let rellenar = "=".repeat(tableroPropio.nombreJugador.length)  
+
+    console.log(`==============${rellenar}==============`);
+    console.log(`==== Es el TURNO de la ${tableroPropio.nombreJugador.toUpperCase()} ====`);
+    console.log(`==============${rellenar}==============`);
 
     let vuelveADisparar = true;
 
@@ -125,8 +129,6 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
                 console.log("💥¡ IMPACTO, OBJETIVO TOCADO !");
                 console.table(tableroEnemigo.escenario);
                 tableroEnemigo.disparosJugador--;
-
-                // Comprueba si el navio de que se trate ha sido hundido.
 
                 let hundido = true;
 
@@ -161,16 +163,6 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
             vuelveADisparar = true;
         }
     }
-
-/*     let victoria = true;
-
-    for(let i= 0; i < FILAS; i++ ) {
-        for(let x = 0; x < COLUMNAS; x++){
-            if(x !== " " || x !== "🔥" || x !== "🌊"){
-                victoria = false;
-            }
-        }
-    } */
 
     return victoria;
 }
