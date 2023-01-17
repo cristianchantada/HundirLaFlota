@@ -1,5 +1,6 @@
-export {creaArmada, posicionaArmada};
+export {creaArmada, posicionaArmada, rondaDeDisparo};
 import { Buque } from "./classBuque.js";
+import {FILAS, COLUMNAS} from "./data.js";
 
 function dameNumeroAleatorioAmbosIncluidos(min, max){
     min = Math.ceil(min);
@@ -69,7 +70,7 @@ function posicionaArmada(armada, tablero){
                             seccionesComprobadas++;
                         } else {
                             seccionesComprobadas = 0;
-                            break
+                            break;
                         }
                     }
                 }
@@ -91,7 +92,7 @@ function posicionaArmada(armada, tablero){
                             seccionesComprobadas++;
                         } else {
                             seccionesComprobadas = 0;
-                            break
+                            break;
                         }
                     }
                 }
@@ -105,23 +106,63 @@ function posicionaArmada(armada, tablero){
     return tablero;
 }
 
-// Turnos jugadores:
+function rondaDeDisparo(tableroPropio, tableroEnemigo){
 
-    // seleccionTiroVertical = dameNumeroAleatorioAmbosIncluidos(0, 10);
-    // seleccionTiroHorizontal dameNumeroAleatorioAmbosIncluidos(0,10);
+    console.log(`Es el TURNO de la ${tableroPropio.nombreJugador}`);
 
-    // comprobar si no ha diparado antes a dicha posición:
+    let vuelveADisparar = true;
 
-        // Si en la posición hay 'Agua' O 'Fuego':
-            // recalcula el disparo
-        // FUEGOOOOOO !!!:
-            // mientras no falle sigue tirando:
-                // Si en la posicion hay != distinto de " " (solo queda buque):
-                    //Tocado
-                        // SobreEscribimos codigo buque a Fuego 
-                        // Anotamos código del buque
-                        // Comprobamos en tablero enemigo si queda alguna casilla con ese codigo:
-                            // si no queda, se dice hundido
-                // En los demas casos (Solo queda " ") ha fallado:
-                    // Se sobreescribe en el tablero enemigo "Fuego" en la casilla:
-                    // cambia turno al otro jugador.
+    while(vuelveADisparar){
+        let apuntadoHorizontal = dameNumeroAleatorioAmbosIncluidos(0, 9);
+        let apuntadoVertical = dameNumeroAleatorioAmbosIncluidos(0, 9);
+
+        if (tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !== "🔥" && tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !==  "🌊"){
+            if(tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !== " "){
+
+                let codigoNavioDañado = tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical]; 
+                tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] = "🔥";
+                console.log("FUEEE-GO 🎇💣");
+                console.log("💥¡ IMPACTO, OBJETIVO TOCADO !");
+                console.table(tableroEnemigo.escenario);
+                tableroEnemigo.disparosJugador--;
+
+                // Comprueba si el navio de que se trate ha sido hundido.
+
+                let hundido = true;
+
+                for(let i= 0; i < FILAS; i++ ) {
+                    for(let x = 0; x < COLUMNAS; x++){
+                        if(x = codigoNavioDañado){
+                            hundido = false;
+                        }
+                    }
+                }
+
+                if(hundido === true){
+                    console.log("¡ El navio enemigo ha sido hundido ! ¡Hip, hip, hurraaaa! 🥳🥳🎉🎉");
+                }
+                    
+            } else {
+                tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] = "🌊";
+                vuelveADisparar = false;
+                console.log("❌ ¡ Objetivo intacto !");
+                console.table(tableroEnemigo.escenario);
+                console.log("Es el turno de la Armada enemiga 😥");
+                tableroEnemigo.disparosJugador--;
+            }
+        } else {
+            vuelveADisparar = true;
+        }
+    }
+
+    let victoria = true;
+
+        for(let i= 0; i < FILAS; i++ ) {
+            for(let x = 0; x < COLUMNAS; x++){
+                if(x !== " " && x !== "F" && x !== "W"){
+                    victoria = false;
+                }
+            }
+        }
+        return victoria;
+}

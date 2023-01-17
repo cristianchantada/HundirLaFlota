@@ -1,8 +1,10 @@
+import { DISPAROS } from "./data.js";
 
 export class Tablero {
-    constructor (numeroJugador){
-        this.numeroJugador = numeroJugador;
-        this.escenario = []
+    constructor (nombreJugador){
+        this.nombreJugador = nombreJugador;
+        this.escenario = [];
+        this.disparosJugador = DISPAROS;
     }
     tableroFisico(FILAS, COLUMNAS) {
         for(let i = 0; i < FILAS; i++){
