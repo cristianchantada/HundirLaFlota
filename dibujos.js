@@ -2,40 +2,40 @@ export {dibujaBuque};
 
 function dibujaBuque (){
 
-    let a = '                       $o"                                                 '
-    let b = '                       $  "                   .........                    '
-    let c = "                      $$$      .oo..     'oooo'oooo'ooooooooo....          "
-    let d = "                       $       $$$$$$$                                     "
-    let e = "                   .ooooooo.   $$!!!!!                                     "
-    let f = "                 .'.........'. $$!!!!!      o$$oo.   ...oo,oooo,oooo'ooo'' "
-    let g = "   $          .o'  oooooo   '.$$!!!!!      $$!!!!!       'oo''oooo''       "
-    let h = " ..o$ooo...    $                '!!''!.     $$!!!!!                        "
-    let i = " $    ..  '''oo$$$$$$$$$$$$$.    '    'oo.  $$!!!!!                        "
-    let j = " !.......      '''..$$ $$ $$$   ..        '.$$!!''!                        "
-    let k = " !!$$$!!!!!!!!oooo......   '''  $$ $$ :o           'oo.                    "
-    let l = " !!$$$!!!$$!$$!!!!!!!!!!oo.....     ' ''  o$$o .      ''oo..               "
-    let m = " !!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!ooooo..      'o  oo..    $               "
-    let n = "  '!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooooo..  ''   ,$               "
-    let o = "   '!!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooo..$$               "
-    let p = "    !!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$'               "
-    let q = "    '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!!!!!!!!!!!!!!!!!!,               "
-    let r = ".....$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$....           "
+    let a = '                          $o"                                                  '
+    let b = '                          $  "                   .........                     '
+    let c = "                         $$$      .oo..     'oooo'oooo'ooooooooo....           "
+    let d = "                          $       $$$$$$$                                      "
+    let e = "                      .ooooooo.   $$!!!!!                                      "
+    let f = "                    .'.........'. $$!!!!!      o$$oo.   ...oo,oooo,oooo'ooo''  "
+    let g = "      $          .o'  oooooo   '.$$!!!!!      $$!!!!!       'oo''oooo''        "
+    let h = "    ..o$ooo...    $                '!!''!.     $$!!!!!                         "
+    let i = "    $    ..  '''oo$$$$$$$$$$$$$.    '    'oo.  $$!!!!!                         "
+    let j = "    !.......      '''..$$ $$ $$$   ..        '.$$!!''!                         "
+    let k = "    !!$$$!!!!!!!!oooo......   '''  $$ $$ :o           'oo.                     "
+    let l = "    !!$$$!!!$$!$$!!!!!!!!!!oo.....     ' ''  o$$o .      ''oo..                "
+    let m = "    !!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!ooooo..      'o  oo..    $                "
+    let n = "     '!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooooo..  ''   ,$                "
+    let o = "      '!!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooo..$$                "
+    let p = "       !!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$'                "
+    let q = "       '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!!!!!!!!!!!!!!!!!!,                "
+    let r = "   .....$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$....            "
 
-    let ab ="                               o o                                      "
-    let bb ="                               o ooo                                    "
-    let cb ="                                o oo                                    "
-    let db ="                                    o o      |   #)                     "
-    let eb ="                                     oo     _|_|_#_                     "
-    let fb ="                                       o   | USS   |                    "
-    let gb ="  __                    ___________________|  NAVY |_________________   "
-    let hb =" |   -_______-----------                                              ` "
-    let ib =">|    _____                                                   --->     )"
-    let jb =" |__ -     ---------_________________________________________________ / "
+    let ab ="                                  o o                                          "
+    let bb ="                                  o ooo                                        "
+    let cb ="                                   o oo                                        "
+    let db ="                                       o o      |   #)                         "
+    let eb ="                                        oo     _|_|_#_                         "
+    let fb ="                                          o   | USS   |                        "
+    let gb ="     __                    ___________________|  NAVY |_________________       "
+    let hb ="    |   -_______-----------                                              `     "
+    let ib ="   >|    _____                                                   --->     )    "
+    let jb ="    |__ -     ---------_________________________________________________ /     "
 
-    let w = "     Armada de los Estados Unidos    Vs.    Armada Imperial de Japón       "
-    let x = "                   BATALLA DEL MAR DE CORAL - 1942                         "
-    let y = " ".repeat(a.length)
-    let z = "=".repeat(a.length)
+    let w = "       Armada de los Estados Unidos    vs.    Armada Imperial de Japón         "
+    let x = "                       BATALLA DEL MAR DE CORAL - 1942                         "
+    let y = "                                                                               "
+    let z = "==============================================================================="
 
     console.log(y);
     console.log(z);
@@ -87,6 +87,5 @@ function dibujaBuque (){
     console.log(y);
     console.log(z);
     console.log(z);
-    console.log(y);
     console.log(y);
 }

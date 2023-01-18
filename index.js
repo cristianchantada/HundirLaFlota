@@ -1,26 +1,20 @@
 import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS, DISPAROS} from "./data.js";
-import {creaArmada, posicionaArmada, rondaDeDisparo} from "./functions.js";
-import { dibujaBuque } from "./dibujos.js";
+import {creaArmada, posicionaArmada, rondaDeDisparo, dibujaComienzoBatalla} from "./functions.js";
 import { Tablero } from "./classTablero.js";
 
 
-let tablero1 = new Tablero("Armada de los Estados Unidos");
+let tablero1 = new Tablero("Armada de los Estados Unidos 🎖️ ");
 tablero1.tableroFisico(FILAS, COLUMNAS);
-let tablero2 = new Tablero("Armada Imperial Japonesa");
+let tablero2 = new Tablero("Armada Imperial Japonesa 🔴");
 tablero2.tableroFisico(FILAS, COLUMNAS);
 let armada = creaArmada(PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS);
 
 posicionaArmada(armada, tablero1);
 posicionaArmada(armada, tablero2);
 
-dibujaBuque();
 
-console.table(tablero1.escenario);
-console.log();
-console.log();
-console.table(tablero2.escenario);
-console.log();
-console.log();
+
+dibujaComienzoBatalla(tablero1, tablero2);
 
 let finPartida = false;
 while(!finPartida){
