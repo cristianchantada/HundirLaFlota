@@ -1,8 +1,8 @@
-export {creaArmada, posicionaArmada, rondaDeDisparo, dibujaComienzoBatalla};
+export {creaArmada, posicionaArmada, rondaDeDisparo, dibujaComienzoBatalla, estadisticas};
 
 import { Buque } from "./classBuque.js";
-import {FILAS, COLUMNAS} from "./data.js";
-import { dibujaBuque } from "./dibujos.js";
+import {FILAS, COLUMNAS, DISPAROS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS} from "./data.js";
+import { dibujaBuque, dibujaAvionPicado, dibujaAvionEstadisticas} from "./dibujos.js";
 
 function dameNumeroAleatorioAmbosIncluidos(min, max){
     min = Math.ceil(min);
@@ -110,12 +110,16 @@ function posicionaArmada(armada, tablero){
 
 function rondaDeDisparo(tableroPropio, tableroEnemigo){
 
-    let rellenar = "=".repeat(tableroPropio.nombreJugador.length)  
+    let rellenar = "=".repeat(tableroPropio.nombreJugador.length)
+    
+    tableroPropio.rondasDisparo++;
 
     console.log();
     console.log(`====================${rellenar}=========================`);
     console.log(`============= Es el TURNO de la ${tableroPropio.nombreJugador.toUpperCase()}  =============`);
     console.log(`====================${rellenar}=========================`);
+    console.log();
+    console.log(`                                     RONDA Nº ${101 - tableroPropio.disparosJugador}                        `);
     console.log();
 
     let vuelveADisparar = true;
@@ -126,8 +130,7 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
 
         if (tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !== "🔥" && tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !==  "🌊"){
 
-            console.log("|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|");
-            console.log(`| RONDA Nº ${99 - tableroPropio.disparosJugador}                                                                |`);
+            console.log("|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|");           
             console.log(`| OBUSES: ${tableroPropio.disparosJugador}       NAVÍOS ENEMIGOS: ${tableroEnemigo.buquesFlota}                                      |`);
             console.log("|____________________________________________________________________________|");
             console.log();
@@ -137,15 +140,16 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
                 let codigoNavioDañado = tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical]; 
                 tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] = "🔥";
                 tableroPropio.disparosJugador--;
+                tableroPropio.diparosAcertados++;
 
-                console.log(`Apunten a: ${apuntadoHorizontal}${apuntadoVertical} . FUEGOOOOOOOOOO 🎇💣......`);
+                console.log(`   Apunten a ${apuntadoHorizontal}${apuntadoVertical}. FUEGOOOOOOOOOO 💣💣💣`);
                 console.log();
-                console.log(`💥💥💥 ¡ IMPACTO, objetivo ${codigoNavioDañado} enemigo TOCADO en ${apuntadoHorizontal}${apuntadoVertical} ! 💥💥💥`);
+                console.log(`   💥💥💥 ¡ IMPACTO. Objetivo enemigo ${codigoNavioDañado} TOCADO en ${apuntadoHorizontal}${apuntadoVertical} ! 💥💥💥`);
                 console.log();
-                console.log(`Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`)
+                console.log(`   Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`)
                 console.table(tableroEnemigo.escenario);
                 console.log();
-                console.log(`Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`)
+                console.log(`   Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`)
                 console.table(tableroPropio.escenario);
                 
                 let hundido = true;
@@ -161,8 +165,9 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
                 if(hundido === true){
                     var victoria = false
                     tableroEnemigo.buquesFlota--;
+                    tableroPropio.buquesEnemigosHundidos++;
                     console.log();
-                    console.log(`¡ El navio enemigo ${codigoNavioDañado} de la ${tableroEnemigo.nombreJugador} ha sido hundido ! ¡Hip, hip, hurraaaa! 🥳🥳🎉🎉`);
+                    console.log(`   ¡El navio enemigo ${codigoNavioDañado} de la ${tableroEnemigo.nombreJugador} ha sido hundido!¡Hip, hip, hurraaaa! 🥳🥳🎉🎉`);
                     console.log();
 
                     if(tableroEnemigo.buquesFlota === 0){
@@ -175,25 +180,86 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
                 tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] = "🌊";
                 vuelveADisparar = false;
                 tableroPropio.disparosJugador--;
+                tableroPropio.disparosErrados++;
 
-                console.log(`Apunten a: ${apuntadoHorizontal}${apuntadoVertical} . FUEGOOOOOOOOOO 🎇💣......`);
+                console.log(`   Apunten a ${apuntadoHorizontal}${apuntadoVertical}. FUEGOOOOOOOOOO 💣💣💣`);
                 console.log();
-                console.log("❌❌❌ ¡ Objetivo intacto mi capitán ! Es el turno de la Armada enemiga 😥😰");
+                console.log("   ❌❌❌ ¡ Objetivo intacto mi capitán ! El proyectil ha caído en el 🌊");
                 console.log();
-                console.log(`Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`)
+                console.log(`   Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`)
                 console.table(tableroEnemigo.escenario);
                 console.log();
-                console.log(`Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`)
+                console.log(`   Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`)
                 console.table(tableroPropio.escenario);
-                
+             
 
             }
+
+            if(tableroPropio.disparosJugador + tableroEnemigo.disparosJugador <= 0){
+                console.log();
+                console.log("   Ambas marinas de guerra se han quedado sin munición. La batalla ha finalizado.");
+
+                if(tableroEnemigo.buquesFlota > tableroPropio.buquesFlota){
+                    console.log();
+                    console.log(`   La ${tableroEnemigo.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroEnemigo.buquesFlota} navíos a flote`)
+                    console.log(`   frente a los ${tableroPropio.buquesFlota} de la ${tableroPropio.nombreJugador.toUpperCase()}`);
+                } else if (tableroEnemigo.buquesFlota < tableroPropio.buquesFlota){
+                    console.log();
+                    console.log(`   La ${tableroPropio.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroPropio.buquesFlota} navíos a flote`)
+                    console.log(`   frente a los ${tableroEnemigo.buquesFlota} de la ${tableroEnemigo.nombreJugador.toUpperCase()}`);
+                } else {
+                    console.log();
+                    console.log(`   Tanto la ${tableroEnemigo.nombreJugador.toUpperCase()} como la ${tableroPropio.nombreJugador.toUpperCase()}`);
+                    console.log(`   conservan a flote ${tableroEnemigo.buquesFlota} navíos de guerra.`)
+                    console.log();
+                    console.log("   El resultado ha sido EMPATE.")
+                }
+
+                victoria = true;
+                return victoria;
+
+            }
+
         } else {
             vuelveADisparar = true;
         }
     }
 
     return victoria;
+}
+
+function estadisticas(tablero1, tablero2){
+    dibujaAvionEstadisticas();
+
+    console.log();
+    console.log("===============================================================================");
+    console.log(`   Los resultados para la ${tablero1.nombreJugador.toUpperCase()} han sido:`);
+    console.log();
+    console.log(`      Disparos efetuados: ${tablero1.diparosAcertados + tablero1.disparosErrados}.`);
+    console.log(`      Disparos acertados: ${tablero1.diparosAcertados}.`);
+    console.log(`      Disparos errados: ${tablero1.disparosErrados}.`);
+    console.log(`      Disparos restantes: ${tablero1.diparosAcertados + tablero1.disparosErrados - DISPAROS}`);
+    console.log();
+    console.log(`      Buques enemigos hundidos: ${tablero1.buquesEnemigosHundidos}.`);
+    console.log(`      Buques perdidos: ${tablero2.buquesEnemigosHundidos}`);
+    console.log(`      Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero2.buquesEnemigosHundidos}`);
+    console.log();
+    console.log(`      Rondas de disparo efectuadas: ${tablero1.rondasDisparo}.`);
+    
+    console.log();
+    console.log("===============================================================================");
+    console.log(`   Los resultados para la ${tablero2.nombreJugador.toUpperCase()} han sido:`);
+    console.log();
+    console.log(`      Disparos efetuados: ${tablero2.diparosAcertados + tablero2.disparosErrados}.`);
+    console.log(`      Disparos acertados: ${tablero2.diparosAcertados}.`);
+    console.log(`      Disparos errados: ${tablero2.disparosErrados}.`);
+    console.log(`      Disparos restantes: ${tablero2.diparosAcertados + tablero2.disparosErrados - DISPAROS}`);
+    console.log();
+    console.log(`      Buques enemigos hundidos: ${tablero2.buquesEnemigosHundidos}.`);
+    console.log(`      Buques perdidos: ${tablero1.buquesEnemigosHundidos}`);
+    console.log(`      Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero1.buquesEnemigosHundidos}`);
+    console.log();
+    console.log(`      Rondas de disparo efectuadas: ${tablero1.rondasDisparo}.`);
 }
 
 function dibujaComienzoBatalla(tablero1, tablero2){
@@ -209,6 +275,15 @@ function dibujaComienzoBatalla(tablero1, tablero2){
     console.log();
     console.table(tablero2.escenario);
     console.log();
-
+    console.log("===============================================================================");
+    console.log("=                                                                             =");
+    console.log("=        En la mañana del 7 de mayo de 1942, un avión del portaviones         =");
+    console.log("=        norteamericano USS Yorktown informa del avistamiento de la flota     =");
+    console.log("=        japonesa y da comienzo la batalla naval del mar del Coral.           =");
+    console.log("=                                                                             =");
+    console.log("==============================================================================="); 
+    dibujaAvionPicado();
 }
+
+
 

@@ -1,5 +1,5 @@
-import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS, DISPAROS} from "./data.js";
-import {creaArmada, posicionaArmada, rondaDeDisparo, dibujaComienzoBatalla} from "./functions.js";
+import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS} from "./data.js";
+import {creaArmada, posicionaArmada, rondaDeDisparo, dibujaComienzoBatalla, estadisticas} from "./functions.js";
 import { Tablero } from "./classTablero.js";
 
 
@@ -22,7 +22,10 @@ while(!finPartida){
     finPartida = rondaDeDisparo(tablero2, tablero1);
 }
 
-console.log("LA PARTIDA HA FINALIZADO");
+console.log();
+console.log("   LA PARTIDA HA FINALIZADO.");
+console.log();
+estadisticas(tablero1, tablero2);
 
 
 

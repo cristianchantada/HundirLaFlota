@@ -1,4 +1,4 @@
-export {dibujaBuque};
+export {dibujaBuque, dibujaAvionPicado, dibujaAvionEstadisticas};
 
 function dibujaBuque (){
 
@@ -28,7 +28,7 @@ function dibujaBuque (){
     let eb ="                                        oo     _|_|_#_                         "
     let fb ="                                          o   | USS   |                        "
     let gb ="     __                    ___________________|  NAVY |_________________       "
-    let hb ="    |   -_______-----------                                              `     "
+    let hb ="    |   -_______-----------                                              \\    "
     let ib ="   >|    _____                                                   --->     )    "
     let jb ="    |__ -     ---------_________________________________________________ /     "
 
@@ -89,3 +89,37 @@ function dibujaBuque (){
     console.log(z);
     console.log(y);
 }
+
+function dibujaAvionPicado() {
+
+    console.log();
+    console.log("                           \\    |\\");
+    console.log("                            \\   | \\");
+    console.log("                            ____| |__");
+    console.log("                            \\___ \\|__\\");
+    console.log("                                \\  \\");
+    console.log("                                 |  \\");
+    console.log("                                 \\ * \\_");
+    console.log("                        \\         \\  \\ \\     \\");
+    console.log("                         \\        /\\  \\|\\ _   \\");
+    console.log("                         ________/  X  ~~//_____");
+    console.log("                         \\_________/ \\  //|_____\\");
+    console.log("                                 *    \\/o/  *");
+    console.log("                                  *   //     *");
+    console.log("                                     ~");
+    console.log("                                    *           *")
+
+}
+
+function dibujaAvionEstadisticas(){
+
+    console.log("____________________________");
+    console.log("\\                           \\          ___        ______ |");
+    console.log(" \\  ESTADÍSTICAS             \\        /   \\___-=0`/|0`/__|");
+    console.log("  \\            DE LA          \\_______\\          / | /    )");
+    console.log("  /                  BATALLA  /        `/-==__ _/__|/__=-|");
+    console.log(" /                           /         *             \\ | |");
+    console.log("/___________________________/                        (o)");
+
+}
+
