@@ -4,6 +4,9 @@ function dibujaComienzoBatalla(tablero1, tablero2){
 
     dibujaBuque();
 
+    const dibujaIntro =
+
+
     console.log(`Tablero de la ${tablero1.nombreJugador} :`);
     console.log();
     console.table(tablero1.escenario);
@@ -26,113 +29,85 @@ function dibujaComienzoBatalla(tablero1, tablero2){
 
 function dibujaBuque (){
 
-    let a = '                          $o"                                                  '
-    let b = '                          $  "                   .........                     '
-    let c = "                         $$$      .oo..     'oooo'oooo'ooooooooo....           "
-    let d = "                          $       $$$$$$$                                      "
-    let e = "                      .ooooooo.   $$!!!!!                                      "
-    let f = "                    .'.........'. $$!!!!!      o$$oo.   ...oo,oooo,oooo'ooo''  "
-    let g = "      $          .o'  oooooo   '.$$!!!!!      $$!!!!!       'oo''oooo''        "
-    let h = "    ..o$ooo...    $                '!!''!.     $$!!!!!                         "
-    let i = "    $    ..  '''oo$$$$$$$$$$$$$.    '    'oo.  $$!!!!!                         "
-    let j = "    !.......      '''..$$ $$ $$$   ..        '.$$!!''!                         "
-    let k = "    !!$$$!!!!!!!!oooo......   '''  $$ $$ :o           'oo.                     "
-    let l = "    !!$$$!!!$$!$$!!!!!!!!!!oo.....     ' ''  o$$o .      ''oo..                "
-    let m = "    !!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!ooooo..      'o  oo..    $                "
-    let n = "     '!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooooo..  ''   ,$                "
-    let o = "      '!!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooo..$$                "
-    let p = "       !!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$'                "
-    let q = "       '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!!!!!!!!!!!!!!!!!!,                "
-    let r = "   .....$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$....            "
+    const pintadoInicial = `
+                                                                                   
+    ===============================================================================
+    ===============================================================================
+                                                                                   
+                           BATALLA DEL MAR DE CORAL - 1942                         
+                                                                                   
+           Armada de los Estados Unidos    vs.    Armada Imperial de Japón         
+                                                                                   
+    ===============================================================================
+    ===============================================================================
+                                                                                   
+                                                                                   
+                              $o"                                                  
+                              $  "                   .........                     
+                             $$$      .oo..     'oooo'oooo'ooooooooo....           
+                              $       $$$$$$$                                      
+                          .ooooooo.   $$!!!!!                                      
+                        .'.........'. $$!!!!!      o$$oo.   ...oo,oooo,oooo'ooo''  
+          $          .o'  oooooo   '.$$!!!!!      $$!!!!!       'oo''oooo''        
+        ..o$ooo...    $                '!!''!.     $$!!!!!                         
+        $    ..  '''oo$$$$$$$$$$$$$.    '    'oo.  $$!!!!!                         
+        !.......      '''..$$ $$ $$$   ..        '.$$!!''!                         
+        !!$$$!!!!!!!!oooo......   '''  $$ $$ :o           'oo.                     
+        !!$$$!!!$$!$$!!!!!!!!!!oo.....     ' ''  o$$o .      ''oo..                
+        !!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!ooooo..      'o  oo..    $                
+         '!!$$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooooo..  ''   ,$                
+          '!!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!oooo..$$                
+           !!$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$'                
+           '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!!!!!!!!!!!!!!!!!!,                
+       .....$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$....            
+                                                                                   
+                                                                                   
+                                                                                   
+                                                                                   
+                                      o o                                          
+                                      o ooo                                        
+                                       o oo                                        
+                                           o o      |   #)                         
+                                            oo     _|_|_#_                         
+                                              o   |       |                        
+         __                    ___________________|       |_________________       
+        |   -_______-----------                                              \\    
+       >|    _____                                                   --->     )    
+        |__ -     ---------_________________________________________________ /     
+                                                                                   
+                                                                                   
+                                                                                   
+                                                                                   
+    ===============================================================================
+    ===============================================================================
+                                                                                   
+    `;
 
-    let ab ="                                  o o                                          "
-    let bb ="                                  o ooo                                        "
-    let cb ="                                   o oo                                        "
-    let db ="                                       o o      |   #)                         "
-    let eb ="                                        oo     _|_|_#_                         "
-    let fb ="                                          o   | USS   |                        "
-    let gb ="     __                    ___________________|  NAVY |_________________       "
-    let hb ="    |   -_______-----------                                              \\    "
-    let ib ="   >|    _____                                                   --->     )    "
-    let jb ="    |__ -     ---------_________________________________________________ /     "
-
-    let w = "       Armada de los Estados Unidos    vs.    Armada Imperial de Japón         "
-    let x = "                       BATALLA DEL MAR DE CORAL - 1942                         "
-    let y = "                                                                               "
-    let z = "==============================================================================="
-
-    console.log(y);
-    console.log(z);
-    console.log(z);
-    console.log(y);
-    console.log(x);
-    console.log(y);
-    console.log(w);
-    console.log(y);
-    console.log(z);
-    console.log(z);
-    console.log(y);
-    console.log(y);
-    console.log(a);
-    console.log(b);
-    console.log(c);
-    console.log(d);
-    console.log(e);
-    console.log(f);
-    console.log(g);
-    console.log(h);
-    console.log(i);
-    console.log(j);
-    console.log(k);
-    console.log(l);
-    console.log(m);
-    console.log(n);
-    console.log(o);
-    console.log(p);
-    console.log(q);
-    console.log(r);
-    console.log(y);
-    console.log(y);
-    console.log(y);
-    console.log(y);
-    console.log(ab);
-    console.log(bb);
-    console.log(cb);
-    console.log(db);
-    console.log(eb);
-    console.log(fb);
-    console.log(gb);
-    console.log(hb);
-    console.log(ib);
-    console.log(jb);
-    console.log(y);
-    console.log(y);
-    console.log(y);
-    console.log(y);
-    console.log(z);
-    console.log(z);
-    console.log(y);
+    console.log(pintadoInicial);                                                    
 }
 
 function dibujaAvionPicado() {
 
-    console.log();
-    console.log("                           \\    |\\");
-    console.log("                            \\   | \\");
-    console.log("                            ____| |__");
-    console.log("                            \\___ \\|__\\");
-    console.log("                                \\  \\");
-    console.log("                                 |  \\");
-    console.log("                                 \\ * \\_");
-    console.log("                        \\         \\  \\ \\     \\");
-    console.log("                         \\        /\\  \\|\\ _   \\");
-    console.log("                         ________/  X  ~~//_____");
-    console.log("                         \\_________/ \\  //|_____\\");
-    console.log("                                 *    \\/o/  *");
-    console.log("                                  *   //     *");
-    console.log("                                     ~");
-    console.log("                                    *           *")
+    const avionPicado =`
+                                                         
+                               \\    |\\                 
+                                \\   | \\                
+                                ____| |__                
+                                \\___ \\|__\\            
+                                    \\  \\               
+                                     |  \\               
+                                     \\ * \\_            
+                            \\         \\  \\ \\     \\  
+                             \\        /\\  \\|\\ _   \\ 
+                             ________/  X  ~~//_____     
+                             \\_________/ \\  //|_____\\ 
+                                     *    \\/o/  *       
+                                      *   //     *       
+                                         ~               
+                                        *           *    
+    `;
 
+    console.log(avionPicado);
 }
 
 function pintaRondas(tableroPropio) {
@@ -215,41 +190,45 @@ function pintaEstadisticas(tablero1, tablero2, DISPAROS, PORTAVIONES, ACORAZADOS
 
     dibujaAvionEstadisticas();
 
-    console.log();
-    console.log("===============================================================================");
-    console.log(`   Los resultados para la ${tablero1.nombreJugador.toUpperCase()} han sido:`);
-    console.log();
-    console.log(`      Disparos efetuados: ${tablero1.diparosAcertados + tablero1.disparosErrados}`);
-    console.log(`      Disparos acertados: ${tablero1.diparosAcertados}`);
-    console.log(`      Disparos errados: ${tablero1.disparosErrados}`);
-    console.log(`      Disparos restantes: ${DISPAROS - tablero1.diparosAcertados - tablero1.disparosErrados}`);
-    console.log();
-    console.log(`      Buques enemigos hundidos: ${tablero1.buquesEnemigosHundidos}.`);
-    console.log(`      Buques perdidos: ${tablero2.buquesEnemigosHundidos}`);
-    console.log(`      Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero2.buquesEnemigosHundidos}`);
-    console.log();
-    console.log(`      Rondas de disparo efectuadas: ${tablero1.rondasDisparo}`);
+    let pintaTableroEscenarioDefinitivo = function (tableroAPintar){console.table(tableroAPintar)};
 
-    console.log();
-    console.log("===============================================================================");
-    console.log(`   Los resultados para la ${tablero2.nombreJugador.toUpperCase()} han sido:`);
-    console.log();
-    console.log(`      Disparos efetuados: ${tablero2.diparosAcertados + tablero2.disparosErrados}`);
-    console.log(`      Disparos acertados: ${tablero2.diparosAcertados}`);
-    console.log(`      Disparos errados: ${tablero2.disparosErrados}`);
-    console.log(`      Disparos restantes: ${DISPAROS - tablero2.diparosAcertados - tablero2.disparosErrados}`);
-    console.log();
-    console.log(`      Buques enemigos hundidos: ${tablero2.buquesEnemigosHundidos}`);
-    console.log(`      Buques perdidos: ${tablero1.buquesEnemigosHundidos}`);
-    console.log(`      Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero1.buquesEnemigosHundidos}`);
-    console.log();
-    console.log(`      Rondas de disparo efectuadas: ${tablero2.rondasDisparo}`);
-    console.log();
-    console.log(`   Tablero definitivo de la ( ${tablero1.nombreJugador.toUpperCase()} ):`)
-    console.table(tablero1.escenario);
-    console.log();
-    console.log(`   Tablero definitivo de la ( ${tablero2.nombreJugador.toUpperCase()} ):`)
-    console.table(tablero2.escenario);
+    console.log(`
+                                                                                  
+    ===============================================================================
+      Los resultados para la ${tablero1.nombreJugador.toUpperCase()} han sido:
+                                                                                  
+         Disparos efetuados: ${tablero1.diparosAcertados + tablero1.disparosErrados}
+         Disparos acertados: ${tablero1.diparosAcertados}
+         Disparos errados: ${tablero1.disparosErrados}
+         Disparos restantes: ${DISPAROS - tablero1.diparosAcertados - tablero1.disparosErrados}
+                                                                                  
+         Buques enemigos hundidos: ${tablero1.buquesEnemigosHundidos}.
+         Buques perdidos: ${tablero2.buquesEnemigosHundidos}
+         Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero2.buquesEnemigosHundidos}
+                                                                                  
+         Rondas de disparo efectuadas: ${tablero1.rondasDisparo}
+                                                                                  
+    ===============================================================================
+      Los resultados para la ${tablero2.nombreJugador.toUpperCase()} han sido:
+                                                                                  
+         Disparos efetuados: ${tablero2.diparosAcertados + tablero2.disparosErrados}
+         Disparos acertados: ${tablero2.diparosAcertados}
+         Disparos errados: ${tablero2.disparosErrados}
+         Disparos restantes: ${DISPAROS - tablero2.diparosAcertados - tablero2.disparosErrados}
+                                                                                  
+         Buques enemigos hundidos: ${tablero2.buquesEnemigosHundidos}
+         Buques perdidos: ${tablero1.buquesEnemigosHundidos}
+         Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero1.buquesEnemigosHundidos}
+                                                                                  
+         Rondas de disparo efectuadas: ${tablero2.rondasDisparo}
+         `);
+                                                                                  
+    console.log(`
+       Tablero definitivo de la ( ${tablero1.nombreJugador.toUpperCase()} ):
+    ${pintaTableroEscenarioDefinitivo(tablero1.escenario)};
+                                                                                   
+       Tablero definitivo de la ( ${tablero2.nombreJugador.toUpperCase()} ):
+    ${pintaTableroEscenarioDefinitivo(tablero1.escenario)}`);
 
 }
 
@@ -257,13 +236,17 @@ function pintaEstadisticas(tablero1, tablero2, DISPAROS, PORTAVIONES, ACORAZADOS
 
 function dibujaAvionEstadisticas(){
 
-    console.log("      ____________________________");
-    console.log("      \\                           \\          ___        ______ |");
-    console.log("       \\  ESTADÍSTICAS             \\        /   \\___-=0`/|0`/__|");
-    console.log("        \\            DE LA          \\_______\\          / | /    )");
-    console.log("        /                  BATALLA  /        `/-==__ _/__|/__=-|");
-    console.log("       /                           /         *             \\ | |");
-    console.log("      /___________________________/                        (o)");
+    const avionEstadisticas =`
+          ____________________________                                   
+          \\                           \\          ___        ______ |    
+           \\  ESTADÍSTICAS             \\        /   \\___-=0´/|0´/__|   
+            \\            DE LA          \\_______\\          / | /    )  
+            /                  BATALLA  /        ´/-==__ _/__|/__=-|      
+           /                           /         *             \\ | |     
+          /___________________________/                        (o)        
+    `;
+
+console.log(avionEstadisticas);
 
 }
 
