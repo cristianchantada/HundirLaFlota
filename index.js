@@ -1,6 +1,7 @@
 import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS} from "./data.js";
-import {creaArmada, posicionaArmada, rondaDeDisparo, dibujaComienzoBatalla, estadisticas} from "./functions.js";
+import {creaArmada, posicionaArmada, rondaDeDisparo} from "./functions.js";
 import { Tablero } from "./classTablero.js";
+import {dibujaComienzoBatalla, pintaEstadisticas} from "./printer.js"
 
 
 let tablero1 = new Tablero("Armada de los Estados Unidos 🎖️ ");
@@ -25,7 +26,7 @@ while(!finPartida){
 console.log();
 console.log("   LA PARTIDA HA FINALIZADO.");
 console.log();
-estadisticas(tablero1, tablero2);
+pintaEstadisticas(tablero1, tablero2);
 
 
 
