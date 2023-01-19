@@ -1,8 +1,8 @@
 export {creaArmada, posicionaArmada, rondaDeDisparo};
 
 import { Buque } from "./classBuque.js";
-import {FILAS, COLUMNAS, DISPAROS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS} from "./data.js";
-import {pintaRondas, pintaDisparosYNaviosEnemigos, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion} from "./printer.js";
+import {FILAS, COLUMNAS} from "./data.js";
+import {pintaRondas, pintaDisparosYNaviosEnemigos, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion, pintaHundimiento} from "./printer.js";
 
 function dameNumeroAleatorioAmbosIncluidos(min, max){
     min = Math.ceil(min);
@@ -151,9 +151,7 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
                 if(hundido === true){
                     tableroEnemigo.buquesFlota--;
                     tableroPropio.buquesEnemigosHundidos++;
-                    console.log();
-                    console.log(`   ¡El navio enemigo ${codigoNavioDañado} de la ${tableroEnemigo.nombreJugador} ha sido hundido!¡Hip, hip, hurraaaa! 🥳🥳🎉🎉`);
-                    console.log();
+                    pintaHundimiento(tableroEnemigo, codigoNavioDañado);
 
                     if(tableroEnemigo.buquesFlota === 0){
                         victoria = true;

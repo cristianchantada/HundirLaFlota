@@ -1,4 +1,4 @@
-export {dibujaBuque, dibujaAvionPicado, dibujaAvionEstadisticas, pintaRondas, pintaDisparosYNaviosEnemigos, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaEstadisticas, dibujaComienzoBatalla, pintaFinMunicion};
+export {dibujaBuque, dibujaAvionPicado, dibujaAvionEstadisticas, pintaRondas, pintaDisparosYNaviosEnemigos, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaEstadisticas, dibujaComienzoBatalla, pintaFinMunicion, pintaHundimiento};
 
 function dibujaComienzoBatalla(tablero1, tablero2){
 
@@ -111,86 +111,73 @@ function dibujaAvionPicado() {
 }
 
 function pintaRondas(tableroPropio) {
-    let rellenar = "=".repeat(tableroPropio.nombreJugador.length)
-    console.log();
-    console.log(`====================${rellenar}=========================`);
-    console.log(`============= Es el TURNO de la ${tableroPropio.nombreJugador.toUpperCase()}  =============`);
-    console.log(`====================${rellenar}=========================`);
-    console.log();
-    console.log(`                                     RONDA Nº ${tableroPropio.rondasDisparo}                        `);
-    console.log();
+
+    let rellenar = "=".repeat(tableroPropio.nombreJugador.length);
+
+    console.log(`
+     =================${rellenar}======================
+     ========== Es el TURNO de la ${tableroPropio.nombreJugador.toUpperCase()}  ==========
+     =================${rellenar}======================
+    
+                                   RONDA Nº ${tableroPropio.rondasDisparo}                        
+                                   ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺`);
 }
 
 function pintaDisparosYNaviosEnemigos(tableroPropio, tableroEnemigo) {
-    console.log("|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|");           
-    console.log(`| OBUSES: ${tableroPropio.disparosJugador}       NAVÍOS ENEMIGOS: ${tableroEnemigo.buquesFlota}                                      |`);
-    console.log("|____________________________________________________________________________|");
-    console.log();
+    console.log(`     ========================================================================\n\t\t   OBUSES: ${tableroPropio.disparosJugador}   \t\t   NAVÍOS ENEMIGOS: ${tableroEnemigo.buquesFlota}\n     ========================================================================\n `);
 
 }
 
 function pintaImpacto(apuntadoHorizontal, apuntadoVertical, codigoNavioDañado, tableroPropio, tableroEnemigo){
-    console.log(`   Apunten a ${apuntadoHorizontal}${apuntadoVertical}. FUEGOOOOOOOOOO 💣💣💣`);
-    console.log();
-    console.log(`   💥💥💥 ¡ IMPACTO. Objetivo enemigo ${codigoNavioDañado} TOCADO en ${apuntadoHorizontal}${apuntadoVertical} ! 💥💥💥`);
-    console.log();
-    console.log(`   Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`)
+    
+    console.log(`     Apunten a ${apuntadoHorizontal}${apuntadoVertical}. FUEGOOOOOOOOOO 💣💣💣\n\n     💥💥💥 ¡ IMPACTO. Objetivo enemigo ${codigoNavioDañado} TOCADO en ${apuntadoHorizontal}${apuntadoVertical} ! 💥💥💥\n     ========================================================================\n `);
+
+    console.log(`     Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`);
     console.table(tableroEnemigo.escenario);
-    console.log();
-    console.log(`   Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`)
+
+    console.log(`\n     Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`);
     console.table(tableroPropio.escenario);
+
+}
+
+function pintaHundimiento(tableroEnemigo, codigoNavioDañado){
+   
+    console.log(`\n   ¡El navio enemigo ${codigoNavioDañado} de la ${tableroEnemigo.nombreJugador} ha sido hundido!¡Hip, hip, hurraaaa!\n `);
+    
 }
 
 function pintaFinMunicion(tableroPropio, tableroEnemigo) {
-    console.log();
-    console.log("   Ambas marinas de guerra se han quedado sin munición. La batalla ha finalizado.");
+    console.log("   Ambas marinas de guerra se han quedado sin munición. La batalla ha finalizado.\n ");
 
     if(tableroEnemigo.buquesFlota > tableroPropio.buquesFlota){
-        console.log();
-        console.log(`   La ${tableroEnemigo.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroEnemigo.buquesFlota} navíos a flote`)
-        console.log(`   frente a los ${tableroPropio.buquesFlota} de la ${tableroPropio.nombreJugador.toUpperCase()}`);
+        console.log(`   La ${tableroEnemigo.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroEnemigo.buquesFlota} navíos a flote\n   frente a los ${tableroPropio.buquesFlota} de la ${tableroPropio.nombreJugador.toUpperCase()}`);
     } else if (tableroEnemigo.buquesFlota < tableroPropio.buquesFlota){
-        console.log();
-        console.log(`   La ${tableroPropio.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroPropio.buquesFlota} navíos a flote`)
-        console.log(`   frente a los ${tableroEnemigo.buquesFlota} de la ${tableroEnemigo.nombreJugador.toUpperCase()}`);
+        console.log(`   La ${tableroPropio.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroPropio.buquesFlota} navíos a flote\n   frente a los ${tableroEnemigo.buquesFlota} de la ${tableroEnemigo.nombreJugador.toUpperCase()}`);
     } else {
-        console.log();
-        console.log(`   Tanto la ${tableroEnemigo.nombreJugador.toUpperCase()} como la ${tableroPropio.nombreJugador.toUpperCase()}`);
-        console.log(`   conservan a flote ${tableroEnemigo.buquesFlota} navíos de guerra.`)
-        console.log();
-        console.log("   El resultado ha sido EMPATE.")
+        console.log(`   Tanto la ${tableroEnemigo.nombreJugador.toUpperCase()} como la ${tableroPropio.nombreJugador.toUpperCase()}\n   conservan a flote ${tableroEnemigo.buquesFlota} navíos de guerra. El resultado ha sido EMPATE.`)
     }
 }
 
 function pintaVictoriaTotal(tableroPropio, tableroEnemigo){
 
-    console.log("   🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊")
-    console.log(`   ¡La ${tableroPropio.nombreJugador} ha conseguido la VICTORIA TOTAL!`);
-    console.log();
-    console.log(`   La ${tableroEnemigo.nombreJugador} ha sido completamente destruida`);
-    console.log("   😵💀😵‍💫🤕😵💀😵‍💫🤕😵💀😵‍💫🤕😵💀😵‍💫🤕😵💀😵‍💫🤕😵💀😵‍💫🤕😵💀😵‍💫🤕")
-    console.log();
+    console.log(`   🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊\n\n   ¡La ${tableroPropio.nombreJugador} ha conseguido la VICTORIA TOTAL!\n\n   La ${tableroEnemigo.nombreJugador} ha sido completamente destruida\n \n   😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕`);
 }
 
 function pintaDisparoErrado(apuntadoHorizontal, apuntadoVertical, tableroPropio, tableroEnemigo){
 
-    console.log(`   Apunten a ${apuntadoHorizontal}${apuntadoVertical}. FUEGOOOOOOOOOO 💣💣💣`);
-    console.log();
-    console.log("   ❌❌❌ ¡ Objetivo intacto mi capitán ! El proyectil ha caído en el 🌊");
-    console.log();
-    console.log(`   Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`)
+    console.log(`     Apunten a ${apuntadoHorizontal}${apuntadoVertical}. FUEGOOOOOOOOOO 💣💣💣\n\n     ❌❌❌ ¡ Objetivo intacto mi capitán ! El proyectil ha caído en el 🌊\n `);
+    
+    console.log(`     Tablero enemigo ( ${tableroEnemigo.nombreJugador.toUpperCase()} ):`)
     console.table(tableroEnemigo.escenario);
-    console.log();
-    console.log(`   Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`)
+    
+    console.log(`\n     Tablero propio ( ${tableroPropio.nombreJugador.toUpperCase()} ):`)
     console.table(tableroPropio.escenario);
 }
 
 
-function pintaEstadisticas(tablero1, tablero2, DISPAROS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS){;
+function pintaEstadisticas(tablero1, tablero2, DISPAROS){
 
     dibujaAvionEstadisticas();
-
-    let pintaTableroEscenarioDefinitivo = function (tableroAPintar){console.table(tableroAPintar)};
 
     console.log(`
                                                                                   
@@ -204,7 +191,7 @@ function pintaEstadisticas(tablero1, tablero2, DISPAROS, PORTAVIONES, ACORAZADOS
                                                                                   
          Buques enemigos hundidos: ${tablero1.buquesEnemigosHundidos}.
          Buques perdidos: ${tablero2.buquesEnemigosHundidos}
-         Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero2.buquesEnemigosHundidos}
+         Buques restantes: ${tablero1.buquesFlota - tablero2.buquesEnemigosHundidos}
                                                                                   
          Rondas de disparo efectuadas: ${tablero1.rondasDisparo}
                                                                                   
@@ -218,17 +205,15 @@ function pintaEstadisticas(tablero1, tablero2, DISPAROS, PORTAVIONES, ACORAZADOS
                                                                                   
          Buques enemigos hundidos: ${tablero2.buquesEnemigosHundidos}
          Buques perdidos: ${tablero1.buquesEnemigosHundidos}
-         Buques restantes: ${PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS - tablero1.buquesEnemigosHundidos}
+         Buques restantes: ${tablero1.buquesFlota - tablero1.buquesEnemigosHundidos}
                                                                                   
          Rondas de disparo efectuadas: ${tablero2.rondasDisparo}
          `);
                                                                                   
-    console.log(`
-       Tablero definitivo de la ( ${tablero1.nombreJugador.toUpperCase()} ):
-    ${pintaTableroEscenarioDefinitivo(tablero1.escenario)};
-                                                                                   
-       Tablero definitivo de la ( ${tablero2.nombreJugador.toUpperCase()} ):
-    ${pintaTableroEscenarioDefinitivo(tablero1.escenario)}`);
+    console.log(`Tablero definitivo de la ( ${tablero1.nombreJugador.toUpperCase()} ):`);
+    console.table(tablero1.escenario);
+    console.log(`Tablero definitivo de la ( ${tablero2.nombreJugador.toUpperCase()} ):`); 
+    console.table(tablero2.escenario);
 
 }
 

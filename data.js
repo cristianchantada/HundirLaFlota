@@ -7,5 +7,5 @@ const ACORAZADOS = 1;
 const CRUCEROS = 2;
 const DESTRUCTORES = 3;
 const SUBMARINOS = 3;
-const DISPAROS = 30;
+const DISPAROS = 100;
 

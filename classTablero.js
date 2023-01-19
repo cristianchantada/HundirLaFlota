@@ -8,7 +8,7 @@ export class Tablero {
         this.diparosAcertados = 0;
         this.disparosErrados = 0;
         this.buquesEnemigosHundidos = 0;
-        this.rondasDisparo = 1
+        this.rondasDisparo = 0;
         this.buquesFlota = PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS;
     }
     tableroFisico(FILAS, COLUMNAS) {
