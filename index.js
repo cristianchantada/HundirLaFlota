@@ -9,6 +9,7 @@ let partida = creaJuego(Tablero, creaArmada, posicionaArmada, dibujaComienzoBata
 let finPartida = false;
 while(!finPartida){
     finPartida = rondaDeDisparo(partida[0], partida[1], pintaRondas, dameNumeroAleatorioAmbosIncluidos, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion);
+    if(finPartida) break;
     finPartida = rondaDeDisparo(partida[1], partida[0], pintaRondas, dameNumeroAleatorioAmbosIncluidos, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion);
 }
 

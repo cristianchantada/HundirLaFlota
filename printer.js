@@ -18,8 +18,13 @@ function dibujaComienzoBatalla(tablero1, tablero2){
 
 function pintaRondas(tableroPropio) {
 
-    let turnoDe = `================ Es el TURNO de la ${tableroPropio.nombreJugador.toUpperCase()}  ================`;
-    let rellenar = "=".repeat(turnoDe.length);
+    var turnoDe = `================ Es el TURNO de la ${tableroPropio.nombreJugador.toUpperCase()}  ================`;
+    var rellenar = "=".repeat(turnoDe.length);
+
+    if (tableroPropio.nombreJugador === "Armada de los Estados Unidos 🎖️"){
+        rellenar = "=".repeat(turnoDe.length - 5);
+        turnoDe = `============== Es el TURNO de la ${tableroPropio.nombreJugador.toUpperCase()}  ===============`
+    } 
 
     console.log(rellenar + "\n" + turnoDe + "\n" + rellenar + `\n\n \t\t\t\t RONDA Nº ${tableroPropio.rondasDisparo} \n \t\t\t\t ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺`);
 }
@@ -63,25 +68,25 @@ function pintaImpacto(apuntadoHorizontal, apuntadoVertical, codigoNavioDañado, 
 function pintaHundimiento(tableroEnemigo, codigoNavioDañado){
 
     let barcoDeGuerra = codigoYClaseNavio(codigoNavioDañado);
-    console.log(`\n ¡El navio enemigo ${barcoDeGuerra} de la ${tableroEnemigo.nombreJugador} ha sido hundido!\n ¡Hip, hip, hurraaaa!\n `);
+    console.log(`\n ¡El navio enemigo ${barcoDeGuerra} de la ${tableroEnemigo.nombreJugador}  ha sido hundido!\n ¡Hip, hip, hurraaaa!\n `);
     
 }
 
 function pintaFinMunicion(tableroPropio, tableroEnemigo) {
-    console.log("   Ambas marinas de guerra se han quedado sin munición. La batalla ha finalizado.\n ");
+    console.log(" Ambas marinas de guerra se han quedado sin munición. La batalla ha finalizado.\n ");
 
     if(tableroEnemigo.buquesFlota > tableroPropio.buquesFlota){
-        console.log(`   La ${tableroEnemigo.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroEnemigo.buquesFlota} navíos a flote\n   frente a los ${tableroPropio.buquesFlota} de la ${tableroPropio.nombreJugador.toUpperCase()}`);
+        console.log(` La ${tableroEnemigo.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroEnemigo.buquesFlota} navíos a flote\n frente a los ${tableroPropio.buquesFlota} de la ${tableroPropio.nombreJugador.toUpperCase()}`);
     } else if (tableroEnemigo.buquesFlota < tableroPropio.buquesFlota){
-        console.log(`   La ${tableroPropio.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroPropio.buquesFlota} navíos a flote\n   frente a los ${tableroEnemigo.buquesFlota} de la ${tableroEnemigo.nombreJugador.toUpperCase()}`);
+        console.log(` La ${tableroPropio.nombreJugador.toUpperCase()} ha ganado. Conserva ${tableroPropio.buquesFlota} navíos a flote\n frente a los ${tableroEnemigo.buquesFlota} de la ${tableroEnemigo.nombreJugador.toUpperCase()}`);
     } else {
-        console.log(`   Tanto la ${tableroEnemigo.nombreJugador.toUpperCase()} como la ${tableroPropio.nombreJugador.toUpperCase()}\n   conservan a flote ${tableroEnemigo.buquesFlota} navíos de guerra. El resultado ha sido EMPATE.`)
+        console.log(` Tanto la ${tableroEnemigo.nombreJugador.toUpperCase()} como la ${tableroPropio.nombreJugador.toUpperCase()}\n conservan a flote ${tableroEnemigo.buquesFlota} navíos de guerra. El resultado ha sido EMPATE.`)
     }
 }
 
 function pintaVictoriaTotal(tableroPropio, tableroEnemigo){
 
-    console.log(` 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊\n\n ¡La ${tableroPropio.nombreJugador} ha conseguido la VICTORIA TOTAL!\n\n La ${tableroEnemigo.nombreJugador} ha sido completamente destruida\n\n 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕`);
+    console.log(` 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊 🎉 🎊\n\n ¡La ${tableroPropio.nombreJugador}  ha conseguido la VICTORIA TOTAL!\n\n La ${tableroEnemigo.nombreJugador}  ha sido completamente destruida.\n\n 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕 😵 🤕`);
 }
 
 function pintaDisparoErrado(apuntadoHorizontal, apuntadoVertical, tableroPropio, tableroEnemigo){
@@ -107,7 +112,7 @@ function pintaEstadisticas(partida, DISPAROS){
 
     console.log(`\n
     ===============================================================================\n
-     Los resultados para la ${tablero1.nombreJugador.toUpperCase()} han sido:
+     Los resultados para la ${tablero1.nombreJugador.toUpperCase()}  han sido:
                                                                                   
         Disparos efetuados: ${tablero1.diparosAcertados + tablero1.disparosErrados}
         Disparos acertados: ${tablero1.diparosAcertados}
@@ -121,7 +126,7 @@ function pintaEstadisticas(partida, DISPAROS){
         Rondas de disparo efectuadas: ${tablero1.rondasDisparo}
                                                                                   
     ===============================================================================
-     Los resultados para la ${tablero2.nombreJugador.toUpperCase()} han sido:
+     Los resultados para la ${tablero2.nombreJugador.toUpperCase()}  han sido:
                                                                                   
         Disparos efetuados: ${tablero2.diparosAcertados + tablero2.disparosErrados}
         Disparos acertados: ${tablero2.diparosAcertados}
@@ -139,5 +144,4 @@ function pintaEstadisticas(partida, DISPAROS){
     console.table(tablero1.escenario);
     console.log(` Tablero definitivo de la ( ${tablero2.nombreJugador.toUpperCase()} ):`); 
     console.table(tablero2.escenario);
-
 }

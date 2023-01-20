@@ -41,19 +41,19 @@ function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos
     for(let i = 0; i <= 4; i++){
         for(let x= 0; x <= listaBuques[i] - 1; x++){
             if(i === 0){
-                let buque = new Buque("portaviones", "P" + (1 + x) , 5, "🛫");
+                let buque = new Buque("portaviones", "P" + (1 + x) , 5);
                 armada.portaviones.push(buque); 
             } else if (i === 1) {
-                let buque = new Buque("acorazado", "A" + (1 + x), 4, "🚢" );
+                let buque = new Buque("acorazado", "A" + (1 + x), 4);
                 armada.acorazados.push(buque);
             } else if (i === 2) {
-                let buque = new Buque("crucero", "C" + (1 + x), 3, "🛥️" );
+                let buque = new Buque("crucero", "C" + (1 + x), 3);
                 armada.cruceros.push(buque); 
             } else if (i === 3){
-                let buque = new Buque("destructor", "D" + (1 + x), 2, "🚤" );
+                let buque = new Buque("destructor", "D" + (1 + x), 2);
                 armada.destructores.push(buque);
             } else {
-                let buque = new Buque("submarino", "S"+ (1 + x), 1, "🚀" );
+                let buque = new Buque("submarino", "S"+ (1 + x), 1);
                 armada.submarinos.push(buque);
             }
         }
@@ -123,9 +123,8 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo, pintaRondas, dameNumeroAl
 
     let victoria = false;
 
-    if(tableroPropio.disparosJugador === 0) return victoria
+    if(tableroPropio.disparosJugador <= 0) return victoria;
     
-
     tableroPropio.rondasDisparo++;
     pintaRondas(tableroPropio);
 
@@ -161,9 +160,8 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo, pintaRondas, dameNumeroAl
                     pintaHundimiento(tableroEnemigo, codigoNavioDañado);
 
                     if(tableroEnemigo.buquesFlota === 0){
-                        victoria = true;
                         pintaVictoriaTotal(tableroPropio, tableroEnemigo);
-                        return victoria;
+                        return victoria = true;
                     }
                 }  
             } else {
@@ -176,8 +174,7 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo, pintaRondas, dameNumeroAl
 
             if(tableroPropio.disparosJugador === 0 && tableroEnemigo.disparosJugador === 0){
                 pintaFinMunicion(tableroPropio, tableroEnemigo);
-                victoria = true;
-                return victoria;
+                return victoria = true;
             }
         } else {
             vuelveADisparar = true;
