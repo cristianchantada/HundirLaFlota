@@ -10,6 +10,7 @@ export class Tablero {
         this.buquesEnemigosHundidos = 0;
         this.rondasDisparo = 0;
         this.buquesFlota = PORTAVIONES + ACORAZADOS + CRUCEROS + DESTRUCTORES + SUBMARINOS;
+        this.numeroInicialBuques = this.buquesFlota;
     }
     tableroFisico(FILAS, COLUMNAS) {
         for(let i = 0; i < FILAS; i++){

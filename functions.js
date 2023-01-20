@@ -2,7 +2,7 @@ export {creaArmada, posicionaArmada, rondaDeDisparo};
 
 import { Buque } from "./classBuque.js";
 import {FILAS, COLUMNAS} from "./data.js";
-import {pintaRondas, pintaDisparosYNaviosEnemigos, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion, pintaHundimiento} from "./printer.js";
+import {pintaRondas, pintaDisparosYNavios, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion, pintaHundimiento} from "./printer.js";
 
 function dameNumeroAleatorioAmbosIncluidos(min, max){
     min = Math.ceil(min);
@@ -50,7 +50,6 @@ function posicionaArmada(armada, tablero){
 
     for(let i = 0; i <= Object.values(armada).length - 2; i++) {
         let listaTipoDeBarco = Object.values(armada)[i];
-
         for(let x = 0; x < listaTipoDeBarco.length; x++){
             let codigoNavio = listaTipoDeBarco[x].codigo;
             let posicionLimiteProa = listaTipoDeBarco[x].numeroSecciones - 1;
@@ -60,7 +59,6 @@ function posicionaArmada(armada, tablero){
             let orientacion = dameNumeroAleatorioAmbosIncluidos(0, 1);
 
             if(orientacion){
-
                 let seccionesComprobadas = 0;
                 while(seccionesComprobadas <= listaTipoDeBarco[x].numeroSecciones){
 
@@ -80,9 +78,7 @@ function posicionaArmada(armada, tablero){
                 for(let y = celda; y < listaTipoDeBarco[x].numeroSecciones + celda; y++){
                     tablero.escenario[filaOrColumna][y] =  codigoNavio;
                 }
-
             } else {
-
                 let seccionesComprobadas = 0;
                 while(seccionesComprobadas <= listaTipoDeBarco[x].numeroSecciones){
 
@@ -115,7 +111,6 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
     if(tableroPropio.disparosJugador === 0) return victoria;
 
     tableroPropio.rondasDisparo++;
-
     pintaRondas(tableroPropio);
 
     let vuelveADisparar = true;
@@ -126,11 +121,9 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
 
         if (tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !== "🔥" && tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !==  "🌊"){
 
-
-            pintaDisparosYNaviosEnemigos(tableroPropio, tableroEnemigo);
+            pintaDisparosYNavios(tableroPropio, tableroEnemigo);
 
             if(tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] !== " "){
-
                 let codigoNavioDañado = tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical]; 
                 tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] = "🔥";
                 tableroPropio.disparosJugador--;
@@ -139,7 +132,6 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
                 pintaImpacto(apuntadoHorizontal, apuntadoVertical, codigoNavioDañado, tableroPropio, tableroEnemigo);
                 
                 let hundido = true;
-
                 for(let i= 0; i < FILAS; i++ ) {                 
                     for(let x = 0; x < COLUMNAS; x++){
                         if(tableroEnemigo.escenario[i][x] === codigoNavioDañado){
@@ -147,7 +139,6 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
                         }
                     }
                 }
-
                 if(hundido === true){
                     tableroEnemigo.buquesFlota--;
                     tableroPropio.buquesEnemigosHundidos++;
@@ -155,38 +146,26 @@ function rondaDeDisparo(tableroPropio, tableroEnemigo){
 
                     if(tableroEnemigo.buquesFlota === 0){
                         victoria = true;
-
                         pintaVictoriaTotal(tableroPropio, tableroEnemigo);
-
                         return victoria;
                     }
-                }
-                    
+                }  
             } else {
                 tableroEnemigo.escenario[apuntadoHorizontal][apuntadoVertical] = "🌊";
                 vuelveADisparar = false;
                 tableroPropio.disparosJugador--;
                 tableroPropio.disparosErrados++;
-
                 pintaDisparoErrado(apuntadoHorizontal, apuntadoVertical, tableroPropio, tableroEnemigo);
-
             }
 
             if(tableroPropio.disparosJugador === 0 && tableroEnemigo.disparosJugador === 0){
-
                 pintaFinMunicion(tableroPropio, tableroEnemigo);
                 victoria = true;
                 return victoria;
-
             }
-
         } else {
             vuelveADisparar = true;
         }
     }
-
     return victoria;
 }
-
-
-
