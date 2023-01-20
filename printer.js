@@ -1,5 +1,4 @@
 export {dibujaBuque, dibujaAvionPicado, dibujaAvionEstadisticas, pintaRondas, pintaDisparosYNavios, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaEstadisticas, dibujaComienzoBatalla, pintaFinMunicion, pintaHundimiento};
-
 import {dibujaBuque, dibujaAvionEstadisticas, dibujaAvionPicado} from "./pictures.js";
 
 function dibujaComienzoBatalla(tablero1, tablero2){
@@ -97,7 +96,10 @@ function pintaDisparoErrado(apuntadoHorizontal, apuntadoVertical, tableroPropio,
 }
 
 
-function pintaEstadisticas(tablero1, tablero2, DISPAROS){
+function pintaEstadisticas(partida, DISPAROS){
+
+    let tablero1 = partida[0];
+    let tablero2 = partida[1];
 
     console.log("\n LA PARTIDA HA FINALIZADO.\n ");
 

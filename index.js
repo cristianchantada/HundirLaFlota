@@ -1,24 +1,15 @@
-import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS, DISPAROS} from "./data.js";
-import {creaArmada, posicionaArmada, rondaDeDisparo} from "./functions.js";
+import {DISPAROS} from "./data.js";
 import { Tablero } from "./classTablero.js";
-import {dibujaComienzoBatalla, pintaEstadisticas} from "./printer.js"
+import {creaArmada, posicionaArmada, rondaDeDisparo, creaJuego, dameNumeroAleatorioAmbosIncluidos, } from "./functions.js";
+import {dibujaComienzoBatalla, pintaRondas, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion, pintaEstadisticas} from "./printer.js";
 
 
-let tablero1 = new Tablero("Armada de los Estados Unidos 🎖️");
-tablero1.tableroFisico(FILAS, COLUMNAS);
-let tablero2 = new Tablero("Armada Imperial Japonesa 🔴");
-tablero2.tableroFisico(FILAS, COLUMNAS);
-
-let armada = creaArmada(PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS);
-posicionaArmada(armada, tablero1);
-posicionaArmada(armada, tablero2);
-
-dibujaComienzoBatalla(tablero1, tablero2);
+let partida = creaJuego(Tablero, creaArmada, posicionaArmada, dibujaComienzoBatalla);
 
 let finPartida = false;
 while(!finPartida){
-    finPartida = rondaDeDisparo(tablero1, tablero2);
-    finPartida = rondaDeDisparo(tablero2, tablero1);
+    finPartida = rondaDeDisparo(partida[0], partida[1], pintaRondas, dameNumeroAleatorioAmbosIncluidos, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion);
+    finPartida = rondaDeDisparo(partida[1], partida[0], pintaRondas, dameNumeroAleatorioAmbosIncluidos, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion);
 }
 
-pintaEstadisticas(tablero1, tablero2, DISPAROS);
+pintaEstadisticas(partida, DISPAROS);

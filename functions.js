@@ -1,13 +1,28 @@
-export {creaArmada, posicionaArmada, rondaDeDisparo};
-
+export {creaArmada, posicionaArmada, rondaDeDisparo, creaJuego, dameNumeroAleatorioAmbosIncluidos};
+import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS} from "./data.js";
 import { Buque } from "./classBuque.js";
-import {FILAS, COLUMNAS} from "./data.js";
-import {pintaRondas, pintaDisparosYNavios, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion, pintaHundimiento} from "./printer.js";
+
 
 function dameNumeroAleatorioAmbosIncluidos(min, max){
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function creaJuego(claseTablero, crearArmadas, posicionarArmadas, dibujaComienzoBatalla){
+
+    let tablero1 = new claseTablero("Armada de los Estados Unidos 🎖️");
+    tablero1.tableroFisico(FILAS, COLUMNAS);
+    let tablero2 = new claseTablero("Armada Imperial Japonesa 🔴");
+    tablero2.tableroFisico(FILAS, COLUMNAS);
+
+    let armada = crearArmadas(PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS);
+    posicionarArmadas(armada, tablero1);
+    posicionarArmadas(armada, tablero2);
+
+    dibujaComienzoBatalla(tablero1, tablero2);
+
+    return [tablero1, tablero2];
 }
 
 function creaArmada (portaviones, acorazados, cruceros, destructores, submarinos){
@@ -104,11 +119,12 @@ function posicionaArmada(armada, tablero){
     return tablero;
 }
 
-function rondaDeDisparo(tableroPropio, tableroEnemigo){
+function rondaDeDisparo(tableroPropio, tableroEnemigo, pintaRondas, dameNumeroAleatorioAmbosIncluidos, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion){
 
     let victoria = false;
 
-    if(tableroPropio.disparosJugador === 0) return victoria;
+    if(tableroPropio.disparosJugador === 0) return victoria
+    
 
     tableroPropio.rondasDisparo++;
     pintaRondas(tableroPropio);
