@@ -1,4 +1,4 @@
-import { DISPAROS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS } from "./data.js";
+import { DISPAROS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS } from "../data.js";
 
 export class Tablero {
     constructor (nombreJugador){

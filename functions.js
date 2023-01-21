@@ -1,6 +1,6 @@
 export {creaArmada, posicionaArmada, rondaDeDisparo, creaJuego, dameNumeroAleatorioAmbosIncluidos};
 import {FILAS, COLUMNAS, PORTAVIONES, ACORAZADOS, CRUCEROS, DESTRUCTORES, SUBMARINOS} from "./data.js";
-import { Buque } from "./classBuque.js";
+import { Buque } from "./classes/classBuque.js";
 
 
 function dameNumeroAleatorioAmbosIncluidos(min, max){

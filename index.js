@@ -1,7 +1,7 @@
 import {DISPAROS} from "./data.js";
-import { Tablero } from "./classTablero.js";
+import { Tablero } from "./classes/classTablero.js";
 import {creaArmada, posicionaArmada, rondaDeDisparo, creaJuego, dameNumeroAleatorioAmbosIncluidos, } from "./functions.js";
-import {dibujaComienzoBatalla, pintaRondas, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion, pintaEstadisticas} from "./printer.js";
+import {dibujaComienzoBatalla, pintaRondas, pintaDisparosYNavios, pintaImpacto, pintaHundimiento, pintaVictoriaTotal, pintaDisparoErrado, pintaFinMunicion, pintaEstadisticas} from "./visuals.js";
 
 
 let partida = creaJuego(Tablero, creaArmada, posicionaArmada, dibujaComienzoBatalla);

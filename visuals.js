@@ -1,5 +1,5 @@
 export {dibujaBuque, dibujaAvionPicado, dibujaAvionEstadisticas, pintaRondas, pintaDisparosYNavios, pintaImpacto, pintaVictoriaTotal, pintaDisparoErrado, pintaEstadisticas, dibujaComienzoBatalla, pintaFinMunicion, pintaHundimiento};
-import {dibujaBuque, dibujaAvionEstadisticas, dibujaAvionPicado} from "./pictures.js";
+import {dibujaBuque, dibujaAvionEstadisticas, dibujaAvionPicado} from "./imgs/pictures.js";
 
 function dibujaComienzoBatalla(tablero1, tablero2){
 
@@ -30,7 +30,7 @@ function pintaRondas(tableroPropio) {
 }
 
 function pintaDisparosYNavios(tableroPropio, tableroEnemigo) {
-    console.log(`${"=".repeat(80)}\n\tOBUSES: ${tableroPropio.disparosJugador}\tNAVÍOS PROPIOS: ${tableroPropio.buquesFlota}\tNAVÍOS ENEMIGOS: ${tableroEnemigo.buquesFlota}\n${"=".repeat(80)}\n `);
+    console.log(`${"=".repeat(80)}\n\t  OBUSES: ${tableroPropio.disparosJugador}\t    NAVÍOS PROPIOS: ${tableroPropio.buquesFlota}\t     NAVÍOS ENEMIGOS: ${tableroEnemigo.buquesFlota}\n${"=".repeat(80)}\n `);
 
 }
 
@@ -73,6 +73,7 @@ function pintaHundimiento(tableroEnemigo, codigoNavioDañado){
 }
 
 function pintaFinMunicion(tableroPropio, tableroEnemigo) {
+    
     console.log(" Ambas marinas de guerra se han quedado sin munición. La batalla ha finalizado.\n ");
 
     if(tableroEnemigo.buquesFlota > tableroPropio.buquesFlota){
